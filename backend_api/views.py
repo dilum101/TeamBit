@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-# Create your views here.
+from rest_framework import generics
+from .serializers import playerMetrics_serializer
+from .models import playerMetrics
 
-def main(request):
-    return HttpResponse("<h1>Hello World !! </h1>")
+class PlayerMertics_View(generics.CreateAPIView):
+    queryset = playerMetrics.objects.all()
+    serializer_class = playerMetrics_serializer

@@ -1,7 +1,7 @@
 
 from django.urls import path
-from .views import main
+from .views import PlayerMertics_View
 
 urlpatterns = [
-   path('data', main)
+   path('data', PlayerMertics_View.as_view())
 ]
