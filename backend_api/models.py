@@ -1,3 +1,4 @@
+from telnetlib import FORWARD_X
 from django.db import models
 
 
@@ -6,7 +7,14 @@ class playerMetrics(models.Model):
     player_name = models.CharField(max_length=100,null=True,blank=True)
     player_no =  models.CharField(max_length=20,null=True,blank=True)
     player_deviceId = models.CharField(max_length=40,null=True,blank=True)
-    group_name = models.CharField(max_length=40)
+    
+    FORWARDS = "FD"
+    BACKS = "BK"
+    MIDDLES = "MD"  
+    group_names = [("FORWARDS","Forwards"),("BACKS","Backs"),("MIDDLES","Middles")] 
+          
+    
+    group_name = models.CharField(max_length=8, choices=group_names, default=FORWARDS)
     session_name = models.CharField(max_length=40,null=True,blank=True)
     date = models.DateTimeField(auto_now_add=True) 
 
